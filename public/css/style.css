@@ -1,0 +1,281 @@
+html,
+body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.title {
+    font-size: 50px;
+    color: #157aba;
+    font-weight: bold;
+    padding: 20px;
+    background-color: mistyrose;
+}
+
+.links>a {
+    color: hotpink;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.links>a:hover,
+.links>a.active {
+    color: #157aba;
+    text-decoration: underline;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 0 15px 0 0;
+    display: inline-block;
+}
+
+.btn {
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background-color: #f00;
+}
+
+.btn-submit {
+    background-color: #4CAF50;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+.btn-cancel:hover {
+    background-color: #bd1111;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+    text-align: right;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+    text-align: left;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
+    .col-25,
+    .col-75 {
+        width: 100%;
+        margin-top: 0;
+        text-align: left;
+    }
+    .btn {
+        width: 50%;
+        margin-top: 0;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+/* Zebra striping */
+
+tr:nth-of-type(odd) {
+    background: #eee;
+}
+
+th {
+    background: #333;
+    color: white;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        border: 1px solid #ccc;
+    }
+    td {
+        /* Behave like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+    /*
+    Label the data
+    */
+    td:nth-of-type(1):before {
+        content: "Sl No.";
+    }
+    td:nth-of-type(2):before {
+        content: "Student Name";
+    }
+    td:nth-of-type(3):before {
+        content: "Address";
+    }
+    td:nth-of-type(4):before {
+        content: "Class";
+    }
+    td:nth-of-type(5):before {
+        content: "Gender";
+    }
+    td:nth-of-type(6):before {
+        content: "E-mail";
+    }
+    td:nth-of-type(7):before {
+        content: "Image";
+    }
+    td:nth-of-type(8):before {
+        content: "Options";
+    }
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert {
+    position: relative;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.pagination {
+    display: inline-block;
+    list-style-type: none;
+}
+
+.pagination li {
+    float: left;
+    padding: 8px 16px;
+}
+
+.pagination li a {
+    color: black;
+    text-decoration: none;
+}
+
+.pagination li.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination li:hover:not(.active) {
+    background-color: #ddd;
+}
