@@ -25,6 +25,7 @@
                     <a class="{{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
                     <a class="{{ request()->is('add') ? 'active' : '' }}" href="{{ url('/add') }}">Add a
                         Student</a>
+                    <a class="{{ request()->is('/classes') ? 'active' : '' }}" href="{{ url('/classes') }}">Classes</a>
                 </div>
             </div>
             @yield('main')

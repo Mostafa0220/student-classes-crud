@@ -20,7 +20,7 @@ class StudentController extends Controller
         $students = Student::select('students.*', 'classes.class_name')
             ->join('classes', 'students.class_id', '=', 'classes.id')
             ->paginate(10);
-        return view('welcome', ['students' => $students]);
+        return view('students/index', ['students' => $students]);
     }
 
     /**
@@ -32,7 +32,7 @@ class StudentController extends Controller
     public function addstudent()
     {
         $classArr = Classes::select('id', 'class_name')->get();
-        return view('add', compact('classArr'));
+        return view('students/add', compact('classArr'));
     }
 
     /**
@@ -45,7 +45,7 @@ class StudentController extends Controller
     {
         if ($stud = Student::find($id)) {
             $classArr = Classes::select('id', 'class_name')->get();
-            return view('edit', compact('classArr', 'stud'));
+            return view('students/edit', compact('classArr', 'stud'));
         } else {
             return redirect('/')->with('error', 'Student not found.');
         }

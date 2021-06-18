@@ -11,6 +11,7 @@
 				<p>{{ $message }}</p>
 			</div>
 		@endif
+		
 		<table>
 			<thead>
 				<tr>
