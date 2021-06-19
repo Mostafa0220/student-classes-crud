@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2021 at 02:16 PM
+-- Generation Time: Jun 19, 2021 at 07:24 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -94,10 +94,10 @@ CREATE TABLE `students` (
   `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_of_birth` date NOT NULL,
   `class_id` int(11) NOT NULL,
-  `student_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` enum('male','female') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `e_mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` enum('male','female') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `e_mail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -107,8 +107,10 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `first_name`, `last_name`, `date_of_birth`, `class_id`, `student_image`, `gender`, `address`, `e_mail`, `created_at`, `updated_at`) VALUES
-(3, 'Mostafa', 'Bayumi', '1990-04-12', 3, '1623930264.jpg', 'male', 'alexandia', 'a@g.com', '2021-06-17 11:44:24', '2021-06-17 11:44:24'),
-(4, 'Student', 'One', '1990-08-09', 1, '1623931953.jpg', 'male', 'Dubai', 'student@gmail.com', '2021-06-17 12:12:33', '2021-06-17 12:12:33');
+(3, 'Mostafa1', 'Bayumi1', '1990-04-13', 4, '1623930264.jpg', 'male', 'alexandia', 'a@g.com', '2021-06-17 11:44:24', '2021-06-18 22:37:59'),
+(4, 'Student', 'One', '1990-08-09', 3, '1623931953.jpg', 'male', 'Dubai', 'student@gmail.com', '2021-06-17 12:12:33', '2021-06-19 01:11:30'),
+(5, 'Jana', 'Mostafa', '1990-07-15', 2, NULL, NULL, NULL, NULL, '2021-06-19 01:33:58', '2021-06-19 01:11:41'),
+(6, 'Ddd', 'D', '1990-07-15', 1, NULL, NULL, NULL, NULL, '2021-06-18 21:38:10', '2021-06-18 21:38:10');
 
 -- --------------------------------------------------------
 
@@ -171,7 +173,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -183,7 +185,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
