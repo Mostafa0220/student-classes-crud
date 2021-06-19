@@ -15,11 +15,18 @@ class ClassesController extends Controller
      * Maps to the following URL: http://localhost:8000/classes
      * shows the list page of classes
      */
-    public function index()
+    public function index(Request $request)
     {
-        $classes = Classes::select('*')
-            ->paginate(10);
-        return view('classes/index', ['classes' => $classes]);
+        if ($request->wantsJson()) {
+            $classes = Classes::select('*')
+            ->get();
+            // return JSON-formatted response
+            return response ( $classes, 200 );
+        } else {
+            $classes = Classes::select('*')
+                ->paginate(10);
+            return view('classes/index', ['classes' => $classes]);
+        }
     }
 
     /**
