@@ -2,8 +2,8 @@ var app = angular.module('myApp', [])
 
 app.controller('studentController', function($scope, $http) {
 
-    //var url = 'https://test.univer.me/api';
-    var url = 'http://localhost/students/public/api';
+
+    var url = 'http://localhost:8000/api';
 
     $scope.fetchAllStudents = function() {
         $http.get(url).then(function(response) {
