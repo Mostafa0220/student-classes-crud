@@ -1,0 +1,162 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>CRUD</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div class="container" ng-controller="studentController">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <form ng-submit="storeStudent()">
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <input type="text" class="form-control" ng-model="first_name" placeholder="First Name">
+                    </div>
+                    <br/>
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <input type="text" class="form-control" ng-model="last_name" placeholder="Last Name">
+                    </div>
+                    <br/>
+                    <div class="input-group">
+
+                        <span class="input-group-addon glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
+                        <input type="text" class="form-control" ng-model="date_of_birth" placeholder="1989-07-15">
+                    </div>
+                    <br/>
+                    <!-- <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <input type="text" class="form-control" ng-model="age" ng-value="calculateAge(date_of_birth)" placeholder="Age" readonly="readonly">
+                    </div>
+                    <br/> -->
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-tags" aria-hidden="true"></span>
+                        <select class="form-control" ng-model="class_id">
+                            <option value="">Select a Class </option>                                     
+
+                            <option ng-repeat="x in classes"  ng-value="x.id" >{{x.class_name}}
+                        </select>
+                        <!-- <select class="form-control" [(ngModel)]="class_id" placeholder="Select a Class">
+                            <option *ngFor="let x of classes" [value]="x.id">{{ x.class_name }}</option>
+                        </select> -->
+                        <!-- <select [(ngModel)]="car.colour"">
+                            <option *ngFor="let x of colours" [value]="x.id" [selected]="car.color.id==x .id">{{x.name}}</option>
+                        </select> -->
+                        <!-- <input type="text" class="form-control" ng-model="class_id" placeholder="Select a Class"> -->
+                    </div>
+
+                    <br/>
+
+                    <button type="submit" class="btn btn-warning btn-lg pull-right">Add Student</button>
+                </form>
+            </div>
+            <div class="col-md-4" ng-repeat="error in storeStudentResponse.errors">
+                <div class="alert alert-danger" role="alert" ng-if="storeStudentResponse">{{error}}</div>
+            </div>
+        </div>
+        <div class="table-wrapper">
+            <div class="row">
+                <div class="panel panel-default">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date of Birth</th>
+
+                                <th>Class Name</th>
+
+
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="student in students">
+                                <td>{{student.first_name}} {{student.last_name}}</td>
+                                <td>{{student.date_of_birth}}</td>
+
+                                <td>{{student.class_name}}</td>
+
+
+                                <td>
+                                    <button class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="showStudent(student.id)">Edit</button>
+
+
+                                    <button class="btn btn-danger" ng-click="destroyStudent(student.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form>
+                            <div class="input-group">
+                                <span class="input-group-addon glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <input type="text" class="form-control" ng-model="showFirstName" placeholder="First Name">
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <span class="input-group-addon glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <input type="text" class="form-control" ng-model="showLastName" placeholder="Last Name">
+                            </div>
+                            <br/>
+                            <div class="input-group">
+
+                                <span class="input-group-addon glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
+                                <input type="text" class="form-control" ng-model="showDateOfBirth" placeholder="date of brith">
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <span class="input-group-addon glyphicon glyphicon-tags" aria-hidden="true"></span>
+                                <select class="form-control" ng-model="showClassId">
+                                    <option value="">Select a Class </option>                                     
+        
+                                    <option ng-repeat="x in classes"  ng-value="x.id" >{{x.class_name}}
+                                </select>
+                            </div>
+                            <br/>
+
+                            <br/>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" ng-click="updateStudent(showId)">save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+    </script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/controllers.js"></script>
+</body>
+
+</html>
